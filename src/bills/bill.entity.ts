@@ -1,4 +1,3 @@
-// src/bills/bill.entity.ts
 import {
   Entity as TOEntity,
   PrimaryGeneratedColumn,

@@ -1,4 +1,3 @@
-// src/entities/entity.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Entity as OwnedEntity } from './entity.entity';

@@ -1,4 +1,3 @@
-// src/sensors/sensor.entity.ts
 import {
   Entity as TOEntity,
   PrimaryGeneratedColumn,

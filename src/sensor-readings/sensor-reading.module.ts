@@ -1,4 +1,3 @@
-// src/sensor-readings/sensor-reading.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SensorReading } from './sensor-reading.entity';

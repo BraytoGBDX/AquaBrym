@@ -1,4 +1,3 @@
-// src/entities/entity.entity.ts
 import {
   Entity as TOEntity,
   PrimaryGeneratedColumn,

@@ -1,4 +1,3 @@
-// src/bills/bill.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Bill } from './bill.entity';
