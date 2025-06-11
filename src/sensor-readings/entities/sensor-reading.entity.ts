@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   ManyToOne,
 } from 'typeorm';
-import { Sensor } from '../sensors/sensor.entity';
+import { Sensor } from '../../sensors/entities/sensor.entity';
 
 @TOEntity({ name: 'sensor_readings' })
 export class SensorReading {

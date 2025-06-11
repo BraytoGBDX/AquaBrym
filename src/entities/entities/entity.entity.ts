@@ -7,9 +7,9 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
-import { User } from '../users/user.entity';
-import { Sensor } from '../sensors/sensor.entity';
-import { Bill } from '../bills/bill.entity';
+import { User } from '../../users/entities/user.entity';
+import { Sensor } from '../../sensors/entities/sensor.entity';
+import { Bill } from '../../bills/entities/bill.entity';
 
 export enum EntityType {
   HOUSE = 'house',

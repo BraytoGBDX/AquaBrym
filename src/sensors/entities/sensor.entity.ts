@@ -7,8 +7,8 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
-import { Entity } from '../entities/entity.entity';
-import { SensorReading } from '../sensor-readings/sensor-reading.entity';
+import { Entity } from '../../entities/entities/entity.entity';
+import { SensorReading } from '../../sensor-readings/entities/sensor-reading.entity';
 
 export enum SensorStatus {
   ACTIVE = 'active',

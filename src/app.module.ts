@@ -1,20 +1,20 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import ormconfig from '../ormconfig';
-import { UserModule } from './users/user.module';
-import { EntityModule } from './entities/entity.module';
-import { SensorModule } from './sensors/sensor.module';
-import { SensorReadingModule } from './sensor-readings/sensor-reading.module';
-import { BillModule } from './bills/bill.module';
+import { UserModule } from './users/users.module';
+import { SensorsModule } from './sensors/sensors.module';
+import { SensorReadingsModule } from './sensor-readings/sensor-readings.module';
+import { EntitiesModule } from './entities/entities.module';
+import { BillsModule } from './bills/bills.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(ormconfig),
     UserModule,
-    EntityModule,
-    SensorModule,
-    SensorReadingModule,
-    BillModule,
+    SensorsModule,
+    BillsModule,
+    SensorReadingsModule,
+    EntitiesModule,
   ],
 })
 export class AppModule {}

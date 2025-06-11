@@ -1,10 +1,10 @@
 // ormconfig.ts
 import { DataSourceOptions } from 'typeorm';
-import { User } from './src/users/user.entity';
-import { Entity } from './src/entities/entity.entity';
-import { Sensor } from './src/sensors/sensor.entity';
-import { SensorReading } from './src/sensor-readings/sensor-reading.entity';
-import { Bill } from './src/bills/bill.entity';
+import { User } from './src/users/entities/user.entity';
+import { Entity } from './src/entities/entities/entity.entity';
+import { Sensor } from './src/sensors/entities/sensor.entity';
+import { SensorReading } from './src/sensor-readings/entities/sensor-reading.entity';
+import { Bill } from './src/bills/entities/bill.entity';
 import * as dotenv from 'dotenv';
 
 dotenv.config();

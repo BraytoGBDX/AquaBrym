@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm';
-import { Entity } from '../entities/entity.entity';
+import { Entity } from '../../entities/entities/entity.entity';
 
 export enum BillStatus {
   PENDING = 'pending',

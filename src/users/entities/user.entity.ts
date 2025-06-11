@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
-import { Entity as OwnedEntity } from '../entities/entity.entity';
+import { User as OwnedEntity } from '../entities/user.entity';
 
 export enum UserRole {
   ADMIN = 'admin',
@@ -44,6 +44,6 @@ export class User {
   updated_at: Date;
 
   // Un usuario puede tener varias "entities"
-  @OneToMany(() => OwnedEntity, (entity) => entity.user)
+  @OneToMany(() => OwnedEntity, (entity) => entity.entities)
   entities: OwnedEntity[];
 }
