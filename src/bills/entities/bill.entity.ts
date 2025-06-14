@@ -16,8 +16,8 @@ export enum BillStatus {
 
 @TOEntity({ name: 'bills' })
 export class Bill {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column({ type: 'date' })
   period_start: Date;

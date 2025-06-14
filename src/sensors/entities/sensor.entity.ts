@@ -17,8 +17,8 @@ export enum SensorStatus {
 
 @TOEntity({ name: 'sensors' })
 export class Sensor {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column()
   sensor_type: string; // p.ej. 'flow_turbina'

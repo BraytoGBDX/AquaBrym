@@ -1,26 +1,45 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Bill } from './entities/bill.entity';
 import { CreateBillDto } from './dto/create-bill.dto';
 import { UpdateBillDto } from './dto/update-bill.dto';
 
 @Injectable()
 export class BillsService {
-  create(createBillDto: CreateBillDto) {
-    return 'This action adds a new bill';
+  constructor(
+    @InjectRepository(Bill)
+    private readonly billRepository: Repository<Bill>,
+  ) {}
+
+  async create(createDto: CreateBillDto): Promise<Bill> {
+    const bill = this.billRepository.create(createDto);
+    return await this.billRepository.save(bill);
   }
 
-  findAll() {
-    return `This action returns all bills`;
+  async findAll(): Promise<Bill[]> {
+    return await this.billRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bill`;
+  async findOne(id: number): Promise<Bill> {
+    const bill = await this.billRepository.findOne({ where: { id } });
+    if (!bill) throw new NotFoundException(`Bill #${id} not found`);
+    return bill;
   }
 
-  update(id: number, updateBillDto: UpdateBillDto) {
-    return `This action updates a #${id} bill`;
+  async update(id: number, updateDto: UpdateBillDto): Promise<Bill> {
+    const bill = await this.billRepository.preload({
+      id,
+      ...updateDto,
+    });
+    if (!bill) throw new NotFoundException(`Bill #${id} not found`);
+    return await this.billRepository.save(bill);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} bill`;
+  async remove(id: number): Promise<void> {
+    const result = await this.billRepository.delete(id);
+    if (result.affected === 0) {
+      throw new NotFoundException(`Bill #${id} not found`);
+    }
   }
 }

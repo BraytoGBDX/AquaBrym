@@ -9,8 +9,8 @@ import { Sensor } from '../../sensors/entities/sensor.entity';
 
 @TOEntity({ name: 'sensor_readings' })
 export class SensorReading {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column({ type: 'datetime' })
   timestamp: Date; // Fecha y hora exacta de la lectura

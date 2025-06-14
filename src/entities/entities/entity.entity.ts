@@ -18,8 +18,8 @@ export enum EntityType {
 
 @TOEntity({ name: 'entities' })
 export class Entity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column()
   name: string;
