@@ -10,7 +10,6 @@ async function bootstrap() {
     .setTitle('Mi API')
     .setDescription('Documentación API con Swagger')
     .setVersion('1.0')
-    // Puedes agregar auth, tags, etc. aquí
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

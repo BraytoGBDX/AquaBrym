@@ -1,4 +1,19 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateUserDto } from './create-user.dto';
+import { ApiProperty } from '@nestjs/swagger';
+import { UserRole } from '../entities/user.entity';
 
-export class UpdateUserDto extends PartialType(CreateUserDto) {}
+export class UpdateUserDto{
+    @ApiProperty({ example: 'juan@example.com' })
+      email: string;
+    
+      @ApiProperty({ example: 'StrongPassword123!' })
+      password_hash: string;
+    
+      @ApiProperty({ example: 'Juan' })
+      first_name: string;
+    
+      @ApiProperty({ example: 'Pérez' })
+      last_name: string;
+    
+      @ApiProperty({ enum: UserRole, example: UserRole.USER })
+      role: UserRole;
+}
