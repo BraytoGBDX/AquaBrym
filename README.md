@@ -10,23 +10,18 @@ Aquabrym Backend forma parte de una solución integral para el monitoreo de agua
 
 ---
 
-## Project setup
+## Instalacion de paquetes
 
 ```bash
 $ pnpm install
 ```
 
-## Compile and run the project
+## Compilar y correr el proyecto
 
 ```bash
 # development
 $ pnpm run start
 
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
 ```
 
 ## 🧠 ¿Cómo funciona?
@@ -41,6 +36,7 @@ $ pnpm run start:prod
 
 ## ⚙️ Estructura del Proyecto
 
+```plaintext
 aqua-brym/
 ├── src/
 │ ├── users/
@@ -54,7 +50,7 @@ aqua-brym/
 ├── package.json
 ├── tsconfig.json
 └── README.md
-
+```
 
 ---
 
