@@ -2,12 +2,15 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { SensorReadingsService } from './sensor-readings.service';
 import { CreateSensorReadingDto } from './dto/create-sensor-reading.dto';
 import { UpdateSensorReadingDto } from './dto/update-sensor-reading.dto';
+import { ApiBody } from '@nestjs/swagger';
+
 
 @Controller('sensor-readings')
 export class SensorReadingsController {
   constructor(private readonly sensorReadingsService: SensorReadingsService) {}
 
   @Post()
+  @ApiBody({ type: CreateSensorReadingDto })
   create(@Body() createSensorReadingDto: CreateSensorReadingDto) {
     return this.sensorReadingsService.create(createSensorReadingDto);
   }
@@ -23,6 +26,7 @@ export class SensorReadingsController {
   }
 
   @Patch(':id')
+  @ApiBody({ type: UpdateSensorReadingDto })
   update(@Param('id') id: string, @Body() updateSensorReadingDto: UpdateSensorReadingDto) {
     return this.sensorReadingsService.update(+id, updateSensorReadingDto);
   }
