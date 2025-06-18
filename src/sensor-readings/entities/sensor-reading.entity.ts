@@ -12,7 +12,7 @@ export class SensorReading {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'datetime' })
+  @Column({ type: 'timestamp' })
   timestamp: Date; // Fecha y hora exacta de la lectura
 
   @Column({ type: 'int' })
