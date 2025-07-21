@@ -7,6 +7,7 @@ import { SensorReadingsModule } from './sensor-readings/sensor-readings.module';
 import { EntitiesModule } from './entities/entities.module';
 import { BillsModule } from './bills/bills.module';
 import { SeederModule } from './seed/seeder.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { SeederModule } from './seed/seeder.module';
     SensorReadingsModule,
     EntitiesModule,
     SeederModule,
+    AuthModule,
   ],
 })
 export class AppModule {}

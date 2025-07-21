@@ -1,10 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { SensorsService } from './sensors.service';
 import { CreateSensorDto } from './dto/create-sensor.dto';
 import { UpdateSensorDto } from './dto/update-sensor.dto';
-import { ApiBody } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/jwt.guard-auth';
 
-
+@UseGuards(JwtAuthGuard)
+@ApiBearerAuth()
 @Controller('sensors')
 export class SensorsController {
   constructor(private readonly sensorsService: SensorsService) {}

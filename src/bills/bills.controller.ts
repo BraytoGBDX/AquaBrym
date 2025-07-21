@@ -1,10 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { BillsService } from './bills.service';
 import { CreateBillDto } from './dto/create-bill.dto';
 import { UpdateBillDto } from './dto/update-bill.dto';
-import { ApiBody } from '@nestjs/swagger';
+import { ApiBody, ApiBearerAuth } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/jwt.guard-auth';
 
-
+@UseGuards(JwtAuthGuard)
+@ApiBearerAuth()
 @Controller('bills')
 export class BillsController {
   constructor(private readonly billsService: BillsService) {}
