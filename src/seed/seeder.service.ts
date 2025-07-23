@@ -6,6 +6,7 @@ import { Entity, EntityType } from '../entities/entities/entity.entity';
 import { Sensor, SensorStatus } from '../sensors/entities/sensor.entity';
 import { SensorReading } from '../sensor-readings/entities/sensor-reading.entity';
 import { Bill, BillStatus } from '../bills/entities/bill.entity';
+import { Alert } from '../alerts/entities/alert.entity';
 import { faker } from '@faker-js/faker';
 
 @Injectable()
@@ -16,6 +17,7 @@ export class SeederService {
     @InjectRepository(Sensor) private sensorRepo: Repository<Sensor>,
     @InjectRepository(SensorReading) private readingRepo: Repository<SensorReading>,
     @InjectRepository(Bill) private billRepo: Repository<Bill>,
+    @InjectRepository(Alert) private alertRepo: Repository<Alert>,
   ) {}
 
   async seedAll(count: number): Promise<string> {
@@ -135,6 +137,36 @@ export class SeederService {
     }
 
     await this.readingRepo.insert(readings);
+
+    const alerts: Alert[] = [];
+
+    for (const sensor of insertedSensors) {
+      const numAlerts = faker.number.int({ min: 0, max: 2 });
+
+      for (let i = 0; i < numAlerts; i++) {
+        const alert = this.alertRepo.create({
+          sensor,
+          description: faker.helpers.arrayElement([
+            'Consumo inusualmente alto',
+            'Caudal bajo detectado',
+            'Sensor inactivo por 24h',
+            'Fluctuación irregular de caudal',
+          ]),
+          level: faker.helpers.arrayElement(['info', 'warning', 'critical']),
+          detected_at: faker.date.recent(),
+          resolved: faker.datatype.boolean(),
+          resolved_at: faker.datatype.boolean() ? faker.date.recent() : undefined,
+          extra_data: {
+            flow_rate: faker.number.float({ min: 1, max: 50, fractionDigits: 2 }),
+            volume_liters: faker.number.float({ min: 10, max: 1000, fractionDigits: 2 }),
+          },
+        });
+
+        alerts.push(alert);
+      }
+    }
+
+    await this.alertRepo.insert(alerts);
 
     created += currentBatchSize;
     console.log(`Lote de ${currentBatchSize} inserted. Total: ${created}/${count}`);
