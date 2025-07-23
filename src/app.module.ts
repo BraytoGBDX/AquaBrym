@@ -8,6 +8,7 @@ import { EntitiesModule } from './entities/entities.module';
 import { BillsModule } from './bills/bills.module';
 import { SeederModule } from './seed/seeder.module';
 import { AuthModule } from './auth/auth.module';
+import { AlertsModule } from './alerts/alerts.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { AuthModule } from './auth/auth.module';
     EntitiesModule,
     SeederModule,
     AuthModule,
+    AlertsModule,
   ],
 })
 export class AppModule {}

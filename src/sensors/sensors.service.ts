@@ -18,11 +18,16 @@ export class SensorsService {
   }
 
   async findAll(): Promise<Sensor[]> {
-    return await this.sensorRepository.find();
+    return await this.sensorRepository.find({
+      relations: ['alerts'],
+    });
   }
 
   async findOne(id: number): Promise<Sensor> {
-    const sensor = await this.sensorRepository.findOne({ where: { id } });
+    const sensor = await this.sensorRepository.findOne({
+      where: { id },
+      relations: ['alerts'],
+    });
     if (!sensor) throw new NotFoundException(`Sensor #${id} not found`);
     return sensor;
   }

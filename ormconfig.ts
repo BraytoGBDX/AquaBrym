@@ -4,6 +4,7 @@ import { Entity } from './src/entities/entities/entity.entity';
 import { Sensor } from './src/sensors/entities/sensor.entity';
 import { SensorReading } from './src/sensor-readings/entities/sensor-reading.entity';
 import { Bill } from './src/bills/entities/bill.entity';
+import { Alert } from 'src/alerts/entities/alert.entity';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -16,7 +17,7 @@ const config: DataSourceOptions = {
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  entities: [User, Entity, Sensor, SensorReading, Bill],
+  entities: [User, Entity, Sensor, SensorReading, Bill, Alert],
   synchronize: true,
   logging: false,
 };

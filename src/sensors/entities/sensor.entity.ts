@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { Entity } from '../../entities/entities/entity.entity';
 import { SensorReading } from '../../sensor-readings/entities/sensor-reading.entity';
+import { Alert } from '../../alerts/entities/alert.entity'; // <--- AÑADIDO
 
 export enum SensorStatus {
   ACTIVE = 'active',
@@ -52,4 +53,8 @@ export class Sensor {
   // Relación OneToMany con SensorReading
   @OneToMany(() => SensorReading, (reading) => reading.sensor)
   readings: SensorReading[];
+
+  // ✅ Relación OneToMany con Alert
+  @OneToMany(() => Alert, (alert) => alert.sensor)
+  alerts: Alert[];
 }
