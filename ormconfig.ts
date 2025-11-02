@@ -10,32 +10,32 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 //Local
-const config: DataSourceOptions = {
-  type: 'mysql',
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT ? parseInt(process.env.DB_PORT): undefined,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  entities: [User, Entity, Sensor, SensorReading, Bill, Alert],
-  synchronize: true,
-  logging: false,
-};
-
-//prod
 // const config: DataSourceOptions = {
-//   type: 'postgres',
-//   host: process.env.DB_POSTG,
-//   port: process.env.DB_PORT_HOST ? parseInt(process.env.DB_PORT_HOST): 5432,
-//   username: process.env.DB_USERNAME_HOST,
-//   password: process.env.DB_PASSWORD_HOST,
-//   database: process.env.DB_DATABASE_HOST,
-//   entities: [User, Entity, Sensor, SensorReading, Bill],
+//   type: 'mysql',
+//   host: process.env.DB_HOST,
+//   port: process.env.DB_PORT ? parseInt(process.env.DB_PORT): undefined,
+//   username: process.env.DB_USER,
+//   password: process.env.DB_PASS,
+//   database: process.env.DB_NAME,
+//   entities: [User, Entity, Sensor, SensorReading, Bill, Alert],
 //   synchronize: true,
 //   logging: false,
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-//};
+// };
+
+//prod
+const config: DataSourceOptions = {
+  type: 'postgres',
+  host: process.env.DB_POSTG,
+  port: process.env.DB_PORT_HOST ? parseInt(process.env.DB_PORT_HOST): 5432,
+  username: process.env.DB_USERNAME_HOST,
+  password: process.env.DB_PASSWORD_HOST,
+  database: process.env.DB_DATABASE_HOST,
+  entities: [User, Entity, Sensor, SensorReading, Bill,Alert],
+  synchronize: true,
+  logging: false,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+};
 
 export default config;
