@@ -9,6 +9,7 @@ import { BillsModule } from './bills/bills.module';
 import { SeederModule } from './seed/seeder.module';
 import { AuthModule } from './auth/auth.module';
 import { AlertsModule } from './alerts/alerts.module';
+import { PushNotificationsModule } from './alerts/push-notifications.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AlertsModule } from './alerts/alerts.module';
     SeederModule,
     AuthModule,
     AlertsModule,
+    PushNotificationsModule,
   ],
 })
 export class AppModule {}
