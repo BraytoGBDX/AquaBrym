@@ -37,7 +37,6 @@ export class AlertsService {
     const savedAlert = await this.alertRepo.save(alert);
 
     // Enviar la notificación push después de guardar la alerta
-    // (Por ejemplo, a todos los usuarios suscritos)
     await this.sendPushNotificationToUsers(savedAlert);
 
     return savedAlert;
@@ -48,12 +47,12 @@ export class AlertsService {
     // Aquí deberías obtener las suscripciones de los usuarios desde tu base de datos
     // Este es un ejemplo de cómo podrías hacerlo, ajusta según tu estructura de base de datos
 
-    const userSubscriptions = await this.getUserSubscriptions(); // Simulación de obtener suscripciones
+    const userSubscriptions = await this.getUserSubscriptions(); // Suscripción hardcodeada para pruebas
 
     const payload = {
       title: 'Nueva alerta de sensor',
       body: `Se ha detectado una alerta en el sensor: ${alert.sensor.id}`,
-      icon: '/icono-192x192.png',  // Usa el icono adecuado
+      icon: '/1-192x192.png',  // Usa el icono adecuado
     };
 
     // Enviar notificaciones push a todos los usuarios suscritos
@@ -64,12 +63,15 @@ export class AlertsService {
 
   // Simulamos obtener las suscripciones de los usuarios desde la base de datos
   async getUserSubscriptions() {
-    // Aquí debes obtener las suscripciones de los usuarios desde tu base de datos
+    // Aquí deberías obtener las suscripciones de los usuarios desde tu base de datos
     // Retornamos un arreglo simulado de suscripciones
     return [
       {
-        endpoint: 'https://wns2-bn3p.notify.windows.com/w/?token=BQYAAABdO%2f6PdWss9jQ7IhaGWZc0FMuQd7oh3uKtzrlxCxbd6MLPU2ZU%2bGe5TD7XkAZIQgNGRxp46%2bM%2fxEcskLbBrPCdBNaBU%2fEDjLUA29ZAHbjBjaflWB%2fuWCzLyudp0eAiId1s2wOf4H3Mljvm8fngDlw0lGGOCT2UjZAW1pOHYV%2bip6r8bUCimgnzLXDQMDNfvInOBSkt5H5gRddeBYedlBlUa8F6E%2fjpVeroW7D9zCc%2beZHnXEs5vyT0Df%2f3wDUwNCfOMNGyQZKVc%2f2K3UDFRW9ik36zwZON6XAb5nlFgD6np0BydSAubTcqNnj3912k91Ccz2f%2b2QocUu6bg1wjOJvFlImemKA4JD4qXrlJEJwzsg%3d%3d',
-        keys: { auth: 'authKey1', p256dh: 'p256dhKey1' },
+        endpoint: "https://wns2-bn3p.notify.windows.com/w/?token=BQYAAABdO%2f6PdWss9jQ7IhaGWZc0FMuQd7oh3uKtzrlxCxbd6MLPU2ZU%2bGe5TD7XkAZIQgNGRxp46%2bM%2fxEcskLbBrPCdBNaBU%2fEDjLUA29ZAHbjBjaflWB%2fuWCzLyudp0eAiId1s2wOf4H3Mljvm8fngDlw0lGGOCT2UjZAW1pOHYV%2bip6r8bUCimgnzLXDQMDNfvInOBSkt5H5gRddeBYedlBlUa8F6E%2fjpVeroW7D9zCc%2beZHnXEs5vyT0Df%2f3wDUwNCfOMNGyQZKVc%2f2K3UDFRW9ik36zwZON6XAb5nlFgD6np0BydSAubTcqNnj3912k91Ccz2f%2b2QocUu6bg1wjOJvFlImemKA4JD4qXrlJEJwzsg%3d%3d",
+        keys: { 
+          auth: 'nLjnXnVvEk0sY6-Efn8sHA',  // Clave 'auth' recibida en la suscripción
+          p256dh: 'BEp-zLbx3ACZvw0dH8wkRntVdwvWnL9H8prBwnLY12m6mxg6VX4Lw67P3uqoxVVRN3YimoO7F6Zku7RmJpOkqq0'  // Clave 'p256dh' recibida en la suscripción
+        },
       }
     ];
   }
